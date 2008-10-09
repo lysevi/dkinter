@@ -77,4 +77,10 @@ class Canvas:public Widget
     eval(" addtag "~tag~" "~command~" "~args);
     return new Tag(this,tag);
   }
+
+  string cdelete(string tag)
+  {return eval(" delete "~tag);}
+
+  string cdelete(Tag tag)
+  {return cdelete(tag.name());}
 }
