@@ -1,5 +1,7 @@
 DFLAGS=-unittest -debug -I../ 
 
+DMD=dmd
+
 LDFLAGS=  -lib -L-ltcl8.4 -L-ltk8.4
 sdir = .
 
@@ -13,14 +15,14 @@ all: dk
 
 dk: $(OBJ)
 	@echo  LD $@
-	@dmd $(LDFLAGS) $^ -oflibdk.a
+	@$(DMD) $(LDFLAGS) $^ -oflibdk.a
 
 
 VPATH:=$(sdir)
 
 %.o:%.d
 	@echo D $<
-	@dmd $(DFLAGS) $(addprefix -I,$(sdir)) -c  $<
+	@$(DMD) $(DFLAGS) $(addprefix -I,$(sdir)) -c  $<
 
 
 clean:
