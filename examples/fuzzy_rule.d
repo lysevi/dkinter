@@ -23,6 +23,8 @@ class PlotCanvas:public Frame
       this.wwidth=wwidth;
       init();
       this.m_canvas.bind("<Button-1>",&this.onClick);
+      last_x=cast(float)0;
+      last_y=cast(float)height;
     }
   
   void init()
@@ -56,11 +58,20 @@ class PlotCanvas:public Frame
     writeln("rx=",(e.x*wwidth/width)," ry=",1-(e.y/cast(float)height));
     Coord c={(e.x*wwidth/width),1-(e.y/cast(float)height)};
     m_coords~=[c];
+    writeln("lx=",last_x," ly=",last_y);
+    m_canvas.line("white",[cast(int)last_x,cast(int)last_y,cast(int)e.x,cast(int)e.y]);
+    string last_line=m_canvas.line("white",[cast(int)e.x,cast(int)e.y,width,height]);
+    m_canvas.cdelete("Templ");
+    m_canvas.addtag("Templ","withtag",last_line);
+    last_x=e.x;
+    last_y=e.y;
   }
  protected:
   Coord[] m_coords;
   Canvas  m_canvas;
   int     width,height;
+  float   last_x;
+  float   last_y;
   float   wwidth;      /// размер предметной области по X
 }
 
