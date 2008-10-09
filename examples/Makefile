@@ -1,7 +1,7 @@
 DFLAGS= -L-ltcl8.4 -L-ltk8.4 -I../ -L-L../dk/  -L-ldk
 
-#ex1 ex2 ex3 ex4 ex5 ex6 ex7 ex8 ex9
-all:  fr
+
+all:  fr ex1 ex2 ex3 ex4 ex5 ex6 ex7 ex8 ex9
 
 lib:
 	cd ../&& make ldk
