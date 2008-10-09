@@ -45,6 +45,8 @@ class Widget
 
   this(){m_name=".";}
 
+  string name()const {return m_name;}
+
   void exit() {}
   
   Tcl_Interp* interp(){return m_interp;}
